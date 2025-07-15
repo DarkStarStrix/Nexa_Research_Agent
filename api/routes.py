@@ -1,10 +1,14 @@
-from fastapi import APIRouter, Request, HTTPException
 import datetime
 from hashlib import sha256
-from schemas.query import QueryRequest, QueryResponse
-from core.cache import get_cached_report, set_cached_report
-from services.helix_client import HelixClient
+
+from fastapi import APIRouter, Request, HTTPException
 from sentence_transformers import SentenceTransformer
+
+from core.cache import get_cached_report, set_cached_report
+from core.planner import plan_research
+from core.research import iterative_research
+from core.summarizer import compile_report
+from schemas.query import QueryRequest, QueryResponse
 
 router = APIRouter()
 
@@ -25,10 +29,13 @@ async def query_endpoint(query: QueryRequest, request: Request):
     if cached_report:
         return QueryResponse(success=True, report=cached_report, cached=True)
 
-    # Generate dummy report content (replace with real pipeline)
+    # Use planning and research pipeline with provided pass_type ("full", "half", or "direct")
+    research_plan = plan_research(query.topic)
+    updated_plan = await iterative_research(research_plan, pass_type=query.pass_type)
+    report_text = compile_report(updated_plan)
     report = {
         "topic": query.topic,
-        "content": f"Research report on {query.topic}",
+        "content": report_text,
         "created_at": datetime.datetime.utcnow().isoformat(),
         "user_id": query.user_id
     }

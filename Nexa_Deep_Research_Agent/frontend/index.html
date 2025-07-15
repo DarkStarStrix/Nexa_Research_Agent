@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nexa Research Agent - Deep R&D</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ...existing code... -->
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="mb-4">Nexa Research Agent</h1>
+    <div class="card p-4">
+      <form id="research-form">
+        <div class="mb-3">
+          <label for="topic" class="form-label">Research Topic</label>
+          <input type="text" id="topic" name="topic" class="form-control" placeholder="Enter your research topic" required>
+        </div>
+        <div class="mb-3">
+          <label for="model" class="form-label">Select AI Model (OpenRouter)</label>
+          <select id="model" name="model" class="form-select">
+            <option value="DeepSeek-R1-open">DeepSeek-R1-open</option>
+            <option value="Qwen-72B-instruct">Qwen-72B-instruct</option>
+            <option value="Qwen-14B-chat">Qwen-14B-chat</option>
+            <option value="Claude-3-Haiku">Claude-3-Haiku</option>
+            <option value="Claude-3-Sonnet">Claude-3-Sonnet</option>
+          </select>
+        </div>
+        <!-- Static user_id and pass type for simplicity -->
+        <input type="hidden" id="user_id" name="user_id" value="guest">
+        <input type="hidden" id="pass_type" name="pass_type" value="full">
+        <button type="submit" class="btn btn-primary">Deep R&amp;D</button>
+      </form>
+      <div id="result" class="mt-4"></div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('research-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const topic = document.getElementById('topic').value;
+      const model = document.getElementById('model').value;
+      const user_id = document.getElementById('user_id').value;
+      const pass_type = document.getElementById('pass_type').value;
+      const payload = { topic, user_id, pass_type, model };
+      try {
+        const response = await fetch('/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        document.getElementById('result').innerHTML = `<pre>${JSON.stringify(data.report, null, 2)}</pre>`;
+      } catch (error) {
+        document.getElementById('result').innerText = 'Error: ' + error;
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

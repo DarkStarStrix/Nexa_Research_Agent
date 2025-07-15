@@ -61,17 +61,17 @@ graph TB
 
 ## **Technology Stack**
 
-| **Component** | **Technology** | **Purpose** |
-|---------------|----------------|-------------|
-| **API Framework** | FastAPI | High-performance async API |
-| **LLM Provider** | OpenRouter | Multi-model routing (DeepSeek-R1, Claude-3, Qwen) |
-| **Search Engine** | Exa.ai | Neural web search with content extraction |
-| **Cache Layer** | Redis | Query caching and rate limiting |
-| **Database** | PostgreSQL | User management and session storage |
-| **Vector DB** | Qdrant | Semantic search and embeddings |
-| **Payments** | Stripe | Subscription management and billing |
-| **Validation** | Pydantic v2 | Runtime type checking and data validation |
-| **Deployment** | Docker | Containerized deployment |
+| **Component**     | **Technology** | **Purpose**                                       |
+|-------------------|----------------|---------------------------------------------------|
+| **API Framework** | FastAPI        | High-performance async API                        |
+| **LLM Provider**  | OpenRouter     | Multi-model routing (DeepSeek-R1, Claude-3, Qwen) |
+| **Search Engine** | Exa.ai         | Neural web search with content extraction         |
+| **Cache Layer**   | Redis          | Query caching and rate limiting                   |
+| **Database**      | PostgreSQL     | User management and session storage               |
+| **Vector DB**     | Qdrant         | Semantic search and embeddings                    |
+| **Payments**      | Stripe         | Subscription management and billing               |
+| **Validation**    | Pydantic v2    | Runtime type checking and data validation         |
+| **Deployment**    | Docker         | Containerized deployment                          |
 
 ---
 
