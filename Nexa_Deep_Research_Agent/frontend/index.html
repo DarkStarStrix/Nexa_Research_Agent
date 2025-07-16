@@ -1,60 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Nexa Research Agent - Deep R&D</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- ...existing code... -->
-</head>
-<body>
-  <div class="container my-5">
-    <h1 class="mb-4">Nexa Research Agent</h1>
-    <div class="card p-4">
-      <form id="research-form">
-        <div class="mb-3">
-          <label for="topic" class="form-label">Research Topic</label>
-          <input type="text" id="topic" name="topic" class="form-control" placeholder="Enter your research topic" required>
-        </div>
-        <div class="mb-3">
-          <label for="model" class="form-label">Select AI Model (OpenRouter)</label>
-          <select id="model" name="model" class="form-select">
-            <option value="DeepSeek-R1-open">DeepSeek-R1-open</option>
-            <option value="Qwen-72B-instruct">Qwen-72B-instruct</option>
-            <option value="Qwen-14B-chat">Qwen-14B-chat</option>
-            <option value="Claude-3-Haiku">Claude-3-Haiku</option>
-            <option value="Claude-3-Sonnet">Claude-3-Sonnet</option>
-          </select>
-        </div>
-        <!-- Static user_id and pass type for simplicity -->
-        <input type="hidden" id="user_id" name="user_id" value="guest">
-        <input type="hidden" id="pass_type" name="pass_type" value="full">
-        <button type="submit" class="btn btn-primary">Deep R&amp;D</button>
-      </form>
-      <div id="result" class="mt-4"></div>
-    </div>
-  </div>
-  <script>
-    document.getElementById('research-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const topic = document.getElementById('topic').value;
-      const model = document.getElementById('model').value;
-      const user_id = document.getElementById('user_id').value;
-      const pass_type = document.getElementById('pass_type').value;
-      const payload = { topic, user_id, pass_type, model };
-      try {
-        const response = await fetch('/query', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await response.json();
-        document.getElementById('result').innerHTML = `<pre>${JSON.stringify(data.report, null, 2)}</pre>`;
-      } catch (error) {
-        document.getElementById('result').innerText = 'Error: ' + error;
-      }
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexa Deep R&D Agent</title>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <!-- Lucide icons -->
+    <script type="module">
+      import { createIcons, icons } from "https://cdn.jsdelivr.net/npm/lucide@0.341.0/+esm";
+      window.addEventListener("DOMContentLoaded", () => createIcons({ icons }));
+    </script>
+
+    <!-- Tiny entrance animation -->
+    <style>
+      @keyframes pop {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .pop-in {
+        animation: pop 0.4s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-zinc-900 text-zinc-100 flex items-center justify-center p-4 antialiased">
+    <div class="w-full max-w-xl space-y-8 pop-in">
+      <!-- Brand bar -->
+      <div class="flex items-center justify-center gap-3 select-none">
+        <!-- Circuit‑style logo -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <circle cx="8" cy="8" r="1.4" />
+          <circle cx="16" cy="8" r="1.4" />
+          <circle cx="8" cy="16" r="1.4" />
+          <circle cx="16" cy="16" r="1.4" />
+          <path d="M8 3v3m8-3v3m0 12v3m-8-3v3M3 8h3m0 8H3m18-8h-3m0 8h3" />
+        </svg>
+        <span class="text-2xl font-semibold tracking-tight">Nexa Deep R&D</span>
+      </div>
+
+      <!-- Query bar -->
+      <form id="research-form" class="flex flex-col sm:flex-row items-center gap-3 bg-zinc-800/60 backdrop-blur rounded-2xl shadow-xl ring-1 ring-zinc-700/50 px-5 py-4">
+        <label for="topic" class="sr-only">Research Topic</label>
+        <input
+          type="text"
+          id="topic"
+          name="topic"
+          class="flex-1 bg-transparent border-0 focus:ring-0 placeholder-zinc-400 text-base"
+          placeholder="What do you want to explore?"
+          required
+        />
+
+        <label for="model" class="sr-only">Model</label>
+        <select
+          id="model"
+          name="model"
+          class="rounded-lg bg-zinc-700/60 py-2 px-3 text-sm focus:ring-2 focus:ring-cyan-500"
+        >
+          <option value="DeepSeek-R1-open">DeepSeek R1 (open)</option>
+          <option value="Qwen-72B-instruct">Qwen 72B (instruct)</option>
+          <option value="Qwen-14B-chat">Qwen 14B (chat)</option>
+          <option value="Claude-3-Haiku">Claude 3 Haiku</option>
+          <option value="Claude-3-Sonnet">Claude 3 Sonnet</option>
+        </select>
+
+        <button
+          type="submit"
+          class="inline-flex items-center gap-1 rounded-lg bg-cyan-600 px-4 py-2 text-sm font-medium hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+        >
+          <i data-lucide="arrow-up-right"></i>
+          Run
+        </button>
+
+        <!-- Hidden meta -->
+        <input type="hidden" id="user_id" name="user_id" value="guest" />
+        <input type="hidden" id="pass_type" name="pass_type" value="full" />
+      </form>
+
+      <!-- Result panel -->
+      <section id="result" class="space-y-4"></section>
+    </div>
+
+    <!-- JS -->
+    <script>
+      const form = document.getElementById("research-form");
+      const result = document.getElementById("result");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        await runQuery();
+      });
+
+      async function runQuery() {
+        const topic = document.getElementById("topic").value.trim();
+        const model = document.getElementById("model").value;
+        const user_id = document.getElementById("user_id").value;
+        const pass_type = document.getElementById("pass_type").value;
+
+        if (!topic) return;
+        result.innerHTML = '<div class="text-sm text-zinc-400">Research in progress…</div>';
+
+        try {
+          const res = await fetch("/query", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ topic, model, user_id, pass_type })
+          });
+          if (!res.ok) throw new Error(res.statusText);
+          const { report } = await res.json();
+          result.innerHTML = `<pre class="whitespace-pre-wrap bg-zinc-800/60 p-4 rounded-xl text-sm leading-6">${JSON.stringify(
+            report,
+            null,
+            2
+          )}</pre>`;
+        } catch (err) {
+          result.innerHTML = `<div class="text-red-400">Error: ${err.message}</div>`;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -11,4 +11,3 @@ class QueryResponse(BaseModel):
     success: bool
     report: dict
     cached: bool
-

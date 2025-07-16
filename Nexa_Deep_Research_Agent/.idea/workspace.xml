@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="397e41f7-fcac-494d-bd3e-359305b95778" name="Changes" comment="Add core functionality for research planning and execution pipeline" />
+    <list default="true" id="397e41f7-fcac-494d-bd3e-359305b95778" name="Changes" comment="Add core functionality for research planning and execution pipeline">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/deps.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/deps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/planner.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/planner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/research.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/research.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/summarizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/summarizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/exa_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/exa_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api/deps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api/routes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schemas/query.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../setup.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
