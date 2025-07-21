@@ -1230,36 +1230,6 @@ monthly_revenue:
 - **$1M ARR**: Add dedicated customer success team
 - **Global expansion**: Multi-region deployment
 
----
-
-## Future Roadmap & Enhancements
-
-### **Technical Roadmap**
-
-#### **Q1 2024 - Foundation**
-- [ ] Multi-language support (Spanish, French, German)
-- [ ] Advanced analytics dashboard
-- [ ] API rate limiting improvements
-- [ ] Mobile app development start
-
-#### **Q2 2024 - Integration**
-- [ ] Custom data source integration
-- [ ] Google Drive/Notion/Confluence connectors
-- [ ] Advanced export formats (PDF, Word, PowerPoint)
-- [ ] Webhook support for enterprise customers
-
-#### **Q3 2024 - Intelligence**
-- [ ] Real-time collaborative research
-- [ ] AI-powered research suggestions
-- [ ] Personalized research templates
-- [ ] Advanced citation management
-
-#### **Q4 2024 - Scale**
-- [ ] Multi-tenant architecture
-- [ ] Enterprise SSO integration
-- [ ] Advanced analytics and insights
-- [ ] API marketplace for third-party extensions
-
 ### **Business Expansion**
 
 #### **Market Expansion**
@@ -1276,22 +1246,7 @@ monthly_revenue:
 
 ---
 
-## Additional Resources
-
-### **Documentation Links**
-- **API Documentation**: `/docs` (Swagger UI)
-- **Integration Guides**: `/docs/integration`
-- **Best Practices**: `/docs/best-practices`
-- **Troubleshooting**: `/docs/troubleshooting`
-
-### **Support Channels**
-- **Community Forum**: https://community.nexa-research.com
-- **Developer Discord**: https://discord.gg/nexa-dev
-- **Enterprise Support**: enterprise@nexa-research.com
-- **Status Page**: https://status.nexa-research.com
-
 ### **Development Resources**
-- **GitHub Repository**: https://github.com/nexa/research-agent
 - **SDK Libraries**: Python, JavaScript, Go, Java
 - **Postman Collection**: Pre-configured API requests
 - **Docker Images**: Official container images
