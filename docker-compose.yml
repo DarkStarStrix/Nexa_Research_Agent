@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # This sets the default API key for the free trial.
+      # In production, you would manage keys securely.
+      - NEXA_API_KEY=nexa-free-trial-key-7-days
+    volumes:
+      - .:/app
+
